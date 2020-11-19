@@ -41,11 +41,11 @@ git branch –set-upstream dev origin/dev，
 git merge  dev  
 
 
-Git global setup
-git config --global user.name "林武华"
-git config --global user.email "linwuhua@megvii.com"
+### Git global setup  
+git config --global user.name "林武华"  
+git config --global user.email "linwuhua@megvii.com"  
 
-Create a new repository
+### Create a new repository
 git clone git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git
 cd yapi-diff
 touch README.md
@@ -53,17 +53,17 @@ git add README.md
 git commit -m "add README"
 git push -u origin master
 
-Push an existing folder
-cd existing_folder
-git init
-git remote add origin git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git
-git add .
-git commit -m "Initial commit"
-git push -u origin master
+### Push an existing folder
+cd existing_folder  
+git init  
+git remote add origin git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git  
+git add .  
+git commit -m "Initial commit"  
+git push -u origin master  
 
-Push an existing Git repository
-cd existing_repo
-git remote rename origin old-origin
-git remote add origin git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git
-git push -u origin --all
-git push -u origin --tags
+### Push an existing Git repository
+cd existing_repo  
+git remote rename origin old-origin  
+git remote add origin git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git  
+git push -u origin --all  
+git push -u origin --tags  
