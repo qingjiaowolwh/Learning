@@ -59,6 +59,7 @@ git init
 git remote add origin git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git  
 git add .  
 git commit -m "Initial commit"  
+### 将会关联到远程的master 分支上，以后就可以git push不指定参数了
 git push -u origin master  
 
 ### Push an existing Git repository
