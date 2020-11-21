@@ -1,5 +1,5 @@
 
-# npm  
+# node.js安装后才能使用npm  
 
 npm(node package manager)node的包管理工具
 ## 查看版本
@@ -26,14 +26,14 @@ This will install Vue 2.x version of the template.
 
 For Vue 1.x use: vue init webpack#1.0 my-project
 
-? Project name my-project
-? Project description A Vue.js project
-? Author runoob <test@runoob.com>
-? Vue build standalone
-? Use ESLint to lint your code? Yes
-? Pick an ESLint preset Standard
-? Setup unit tests with Karma + Mocha? Yes
-? Setup e2e tests with Nightwatch? Yes
+? Project name my-project  
+? Project description A Vue.js project  
+? Author runoob <test@runoob.com>  
+? Vue build standalone  
+? Use ESLint to lint your code? Yes  
+? Pick an ESLint preset Standard  
+? Setup unit tests with Karma + Mocha? Yes  
+? Setup e2e tests with Nightwatch? Yes  
 
    vue-cli · Generated "my-project".
 
