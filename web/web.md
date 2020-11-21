@@ -55,4 +55,11 @@ $ cnpm run dev
 > Listening at http://localhost:8080
 
 
+## 单独安装路由
+npm install vue-router --save-dev
+##报错解决方法：   
+1、删除node_modules文件夹  
+2、重新运行 npm install  
+3、再次执行npm install vue-router --save-dev  
+
 
