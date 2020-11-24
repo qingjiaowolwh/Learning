@@ -16,8 +16,8 @@ git branch -u origin/dev
 git branch --set-upstream-to 
 ### 撤销本地分支与远程分支的映射关系
 git branch --unset-upstream
-### 为远程仓库起了一个别名，那么这里就可以使用别名origin调用。这里的含义是将hello_git_branch这个分支提交到远程仓库上面。如果远程仓库没有这个分支，那么也会新建一个该分支。
-git push origin hello_git_branch  
+### 为远程仓库起了一个别名，那么这里就可以使用别名origin调用。这里的含义是将dev这个分支提交到远程仓库上面。如果远程仓库没有这个分支，那么也会新建一个该分支。
+git push origin dev  
 ### 合并分支
 git checkout master  
 git merge yourbranch  
