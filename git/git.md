@@ -1,11 +1,10 @@
 
-### 本地分支名x origin/远程分支名x  拉取远程分支并创建本地分支 tag类似  
-git checkout -b 
-# 创建并切换到分支
+### 创建并切换到分支  tag类似  
 git branch dev  
 git checkout dev  
-或者  
+或  
 git checkout -b dev  
+或  
 git checkout -b dev(本地分支名称) origin/dev(远程分支名称)  
 ### 这条命令表示把本地dev分支提交到远程仓库，即创建了远程分支dev。
 git push origin dev，
