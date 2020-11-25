@@ -1,9 +1,9 @@
-### 1、windows wls 安装 
+### 方法1、windows wls 安装 
 1. Microsoft Store应用商店
 2. 设置 -》 更新和安全 -》 开启开发者选项
 3. 控制面板–》程序与功能–》启动或关闭Windows功能 勾选 适用于Linux的Windows子系统
 
-### 2、远程linux服务  
+### 方法2、远程linux服务  
 scp -r C:\Users\linwuhua\Desktop\linwuhua\android\FFmpeg zhouxinke@10.156.10.146:/home/zhouxinke/  
 wget https://dl.google.com/android/repository/android-ndk-r21b-linux-x86_64.zip  
 unzip android-ndk-r21b-linux-x86_64.zip  
