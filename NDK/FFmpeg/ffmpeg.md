@@ -33,3 +33,70 @@ ls
 make
 make install
 ```
+
+## Android集成  
+### 拷贝.so文件到src/main/jniLibs  
+### 拷贝头文件到src/cpp   
+FFmpegLearning\app\src\main\java> javah -jni com.huazai.ffmpeglearning.MainActivity 生成native头文件  
+### CMakeLists.txt  
+```
+cmake_minimum_required(VERSION 3.4.1)
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+add_library(
+        native-lib
+        SHARED
+        native-lib.cpp)
+
+find_library(
+        log-lib
+        log)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../jniLibs/${CMAKE_ANDROID_ARCH_ABI}")
+
+target_link_libraries(
+        native-lib
+        avcodec
+        avfilter
+        avformat
+        avutil
+        swresample
+        swscale
+        ${log-lib})
+```
+### build.gradle  
+```
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.huazai.ffmpeglearning"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                abiFilters 'armeabi-v7a'
+                cppFlags "-frtti -fexceptions -std=c++14"
+            }
+        }
+        ndk{
+            abiFilters 'armeabi-v7a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+}
+```
