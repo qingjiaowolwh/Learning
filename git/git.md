@@ -32,7 +32,8 @@ git push origin -d dev
 ### 撤回commit  后面数字撤回几次提交  代码仍然会保留
 git reset --soft HEAD~1
 
-
+### 查看分支的父分支
+git reflog show dev
 
 ### git储藏 save表示版本  不会产生commit记录  用于切换分支使用  
 git stash save "test-cmd-stash"   
