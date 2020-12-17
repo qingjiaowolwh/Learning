@@ -1,47 +1,54 @@
-# Eureka服务注册与发现  
-## 什么是 Eureka
-Eureka是Netflix的一个子模块，也是核心模块之一。Eureka是一个
-基于REST的服务，用于定位服务，以实现云端中间层服务发现和故障，
-服务注册与发现对于微服务来说是非常重要的，有了服务注册与发现，只需要使用服务的
-标识符，就可以访问到服务，而不需要修改服务调用的配置文件了，
-功能类似与Dubbo的注册中心，比如Zookeeper
+# SpringCloud 
+### SpringCloud是什么 
+<img src="https://spring.io/images/cloud-diagram-1a4cad7294b4452864b5ff57175dd983.svg" width="80%">  
+Spring Cloud是分布式微服务架构下的一站式解决方案，是各个微服务架构落地技术的集合体，俗称微服务全家桶  
+Spring Cloud为开发人员提供了工具，以快速构建分布式系统中的一些常见模式（例如，配置管理，服务发现，断路器，智能路由，微代理，控制总线，一次性令牌，全局锁，领导选举，分布式会话，群集状态）。分布式系统的协调导致样板式样，并且使用Spring Cloud开发人员可以快速实现这些样板的服务和应用程序。   
+Spring Cloud 离不开Spring Boot属于依赖关系，Spring Boot专注于快速、方便的开发单个个体微服务，Spring Cloud关注全局的服务治理框架  
 
-## 原理讲解
-### Eureka的基本架构
-SpringCloud封装了Netflix公司开发的Eureka模块来实现服务注册与发现
-Eureka采用了C-S的架构设计，
-Eureka Server作为服务注册功能的服务器，他是服务注册中心  
-而系统的其他问服务。使用Eureka的客户端连接到EurekaServer并维持心跳连接。
-这样系统的维护人员就可以通过Eureka Server来监控系统中各个微服务是否正常运行，
-SpringCloud的一些其他模块（比如Zuul）就可以通过EurekaServer来发现
+## eureka服务注册与发现  
+## 什么是 eureka
+eureka是netflix的一个子模块，也是核心模块之一。eureka是一个
+基于rest的服务，用于定位服务，以实现云端中间层服务发现和故障，
+服务注册与发现对于微服务来说是非常重要的，有了服务注册与发现，只需要使用服务的
+标识符，就可以访问到服务，而不需要修改服务调用的配置文件了
+
+## eureka的基本架构
+spring cloud封装了netflix公司开发的eureka模块来实现服务注册与发现
+eureka采用了c-s的架构设计，
+eureka server作为服务注册功能的服务器，他是服务注册中心  
+而系统的其他问服务。使用eureka的客户端连接到eurekaserver并维持心跳连接。
+这样系统的维护人员就可以通过eureka server来监控系统中各个微服务是否正常运行，
+springcloud的一些其他模块（比如zuul）就可以通过eurekaserver来发现
 系统中的其他微服务，并执行相关的逻辑；  
-Eureka Client是一个java客户端，用于简化EurekaServer的交互，客户端同时也具备一个内置的，使用轮询
-负载算法的负载均衡器。在启动后，将会向EurekaServer发送心跳（默认周期为30秒）
-如果EurekaServer在多个心跳周期内没有接收到某个节点的心跳，EurekaServer将会
+eureka client是一个java客户端，用于简化eurekaserver的交互，客户端同时也具备一个内置的，使用轮询
+负载算法的负载均衡器。在启动后，将会向eurekaserver发送心跳（默认周期为30秒）
+如果eurekaserver在多个心跳周期内没有接收到某个节点的心跳，eurekaserver将会
 从服务注册表中把这个服务节点移除掉（默认周期为90秒）
 
-## CAP是什么  
-C（Consistency） 强一致性
-A（Availability）可用性
-P（分区容错性）  
-## CAP 核心原理
+### cap是什么  
+c（consistency） 强一致性
+a（availability）可用性
+p（分区容错性）  
+### cap 核心原理
 一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求  
-根据CAP原理，分成了满足CA原则，满足CP原则和满足AP原则三大类：  
-CA：单点集群，满足一致性，可用性的系统，通常可扩展性较差
-CP：满足一致性，分区容错性的系统，通常性能不是特别高  
-AP：满足可用性，分区容错性的系统，通常对一致性要求低一些  
+根据cap原理，分成了满足ca原则，满足cp原则和满足ap原则三大类：  
+ca：单点集群，满足一致性，可用性的系统，通常可扩展性较差
+cp：满足一致性，分区容错性的系统，通常性能不是特别高  
+ap：满足可用性，分区容错性的系统，通常对一致性要求低一些  
 
-## Eureka保证的是AP
-Eureka在设计时优先保证可用性。Eureka各个节点都是平等的，几个节点挂掉不会影响正常节点的工作，
-剩余的节点依然可以提供注册和查询服务。而Eureka的客户端在向某个Eureka注册时，
-如果发现连接失败，则会自动切换至其他节点，只要有一台Eureka
-还在，就能保证注册服务的可用性，只不过查到的信息可能不是最新的，除此之外，Eureka还有一种自我保护机制，如果在十五分钟内超过
-85%的节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障，此时会出现以下几种情况：  
-1、Eureka不会从注册列表中移除因为长时间没收到心跳而应该过期的服务  
-2、Eureka任然能够接收新服务的注册和查询请求，但是不会被同步到其他节点上（即保证当前节点依然可用）  
+### eureka保证的是ap
+eureka在设计时优先保证可用性。eureka各个节点都是平等的，几个节点挂掉不会影响正常节点的工作，
+剩余的节点依然可以提供注册和查询服务。而eureka的客户端在向某个eureka注册时，
+如果发现连接失败，则会自动切换至其他节点，只要有一台eureka
+还在，就能保证注册服务的可用性，只不过查到的信息可能不是最新的，除此之外，eureka还有一种自我保护机制，如果在十五分钟内超过
+85%的节点都没有正常的心跳，那么eureka就认为客户端与注册中心出现了网络故障，此时会出现以下几种情况：  
+1、eureka不会从注册列表中移除因为长时间没收到心跳而应该过期的服务  
+2、eureka任然能够接收新服务的注册和查询请求，但是不会被同步到其他节点上（即保证当前节点依然可用）  
 3、当网络稳定时，当前实例新的注册信息会被同步不到其他节点中
 
-因此，Eureka可以很好的应对因网络故障导致部分节点失去联系的情况
+因此，eureka可以很好的应对因网络故障导致部分节点失去联系的情况   
+
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/fuwuzhucexiaofei.jpg?raw=true" width="80%">  
 
 ## ribbon
 Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡的工具。  
@@ -52,3 +59,35 @@ Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡�
 #### 进程式LB
 将LB逻辑集成到消费方，消费方从服务注册中心获知哪些地址可用，然后自己再从这些地址中选出一个合适的服务器
 
+## [Hystrix](https://github.com/Netflix/Hystrix/wiki)
+
+[服务雪崩、服务熔断、服务降级](https://www.cnblogs.com/rjzheng/p/10340176.html)
+### 服务雪崩
+### 服务熔断：服务端  
+某个服务超时或者异常，引起服务熔断
+### 服务降级：客户端  
+一般从整体网站请求负荷考虑，当某个服务熔断或者关闭之后，服务将不再被调用，
+此时客户端可以准备一个fallbackFactory,返回一个默认值（缺省值）,整体的服务水平下降了
+比直接挂掉强
+
+### 服务监控
+springcloud-consumer-hystrix-dashboard  
+springcloud-provider-dept-8001
+
+http://localhost:8001/actuator/hystrix.stream
+http://localhost:9001/hystrix
+监控：
+http://localhost:8001/actuator/hyxtrix.stream
+
+
+## Zuul
+Zuul是Spring Cloud全家桶中的微服务API网关。  
+所有从设备或网站来的请求都会经过Zuul到达后端的Netflix应用程序。作为一个边界性质的应用程序，Zuul提供了动态路由、监控、弹性负载和安全功能。Zuul底层利用各种filter实现如下功能：  
+认证和安全 识别每个需要认证的资源，拒绝不符合要求的请求。
+性能监测 在服务边界追踪并统计数据，提供精确的生产视图。
+动态路由 根据需要将请求动态路由到后端集群。
+压力测试 逐渐增加对集群的流量以了解其性能。
+负载卸载 预先为每种类型的请求分配容量，当请求超过容量时自动丢弃。
+静态资源处理 直接在边界返回某些响应。
+
+http://zuul9527.com:9527/mydept/dept/get/1
