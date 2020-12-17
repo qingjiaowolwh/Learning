@@ -5,7 +5,7 @@
 
 Spring Cloud是分布式微服务架构下的一站式解决方案，是各个微服务架构落地技术的集合体，俗称微服务全家桶  
 Spring Cloud为开发人员提供了工具，以快速构建分布式系统中的一些常见模式（例如，配置管理，服务发现，断路器，智能路由，微代理，控制总线，一次性令牌，全局锁，领导选举，分布式会话，群集状态）。分布式系统的协调导致样板式样，并且使用Spring Cloud开发人员可以快速实现这些样板的服务和应用程序。   
-Spring Cloud 离不开Spring Boot属于依赖关系，Spring Boot专注于快速、方便的开发单个个体微服务，Spring Cloud关注全局的服务治理框架  
+Spring Cloud 离不开Spring Boot,属于依赖关系，Spring Boot专注于快速、方便的开发单个个体微服务，Spring Cloud关注全局的服务治理框架  
 
 ## eureka服务注册与发现  
 ## 什么是 eureka
@@ -20,11 +20,11 @@ eureka采用了c-s的架构设计，
 eureka server作为服务注册功能的服务器，他是服务注册中心  
 而系统的其他问服务。使用eureka的客户端连接到eurekaserver并维持心跳连接。
 这样系统的维护人员就可以通过eureka server来监控系统中各个微服务是否正常运行，
-springcloud的一些其他模块（比如zuul）就可以通过eurekaserver来发现
+spring cloud的一些其他模块（比如zuul）就可以通过eurekaserver来发现
 系统中的其他微服务，并执行相关的逻辑；  
 eureka client是一个java客户端，用于简化eurekaserver的交互，客户端同时也具备一个内置的，使用轮询
-负载算法的负载均衡器。在启动后，将会向eurekaserver发送心跳（默认周期为30秒）
-如果eurekaserver在多个心跳周期内没有接收到某个节点的心跳，eurekaserver将会
+负载算法的负载均衡器。在启动后，将会向eureka server发送心跳（默认周期为30秒）
+如果eureka server在多个心跳周期内没有接收到某个节点的心跳，eureka server将会
 从服务注册表中把这个服务节点移除掉（默认周期为90秒）
 
 ### cap是什么  
@@ -72,10 +72,7 @@ Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡�
 此时客户端可以准备一个fallbackFactory,返回一个默认值（缺省值）,整体的服务水平下降了
 比直接挂掉强
 
-### 服务监控操作  
-springcloud-consumer-hystrix-dashboard  
-springcloud-provider-dept-8001  
-
+### 操作  
 http://localhost:8001/actuator/hystrix.stream  
 http://localhost:9001/hystrix
 
