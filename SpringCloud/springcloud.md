@@ -1,6 +1,8 @@
 # SpringCloud 
-### SpringCloud是什么 
+## SpringCloud是什么 
+
 <img src="https://spring.io/images/cloud-diagram-1a4cad7294b4452864b5ff57175dd983.svg" width="80%">  
+
 Spring Cloud是分布式微服务架构下的一站式解决方案，是各个微服务架构落地技术的集合体，俗称微服务全家桶  
 Spring Cloud为开发人员提供了工具，以快速构建分布式系统中的一些常见模式（例如，配置管理，服务发现，断路器，智能路由，微代理，控制总线，一次性令牌，全局锁，领导选举，分布式会话，群集状态）。分布式系统的协调导致样板式样，并且使用Spring Cloud开发人员可以快速实现这些样板的服务和应用程序。   
 Spring Cloud 离不开Spring Boot属于依赖关系，Spring Boot专注于快速、方便的开发单个个体微服务，Spring Cloud关注全局的服务治理框架  
@@ -26,9 +28,9 @@ eureka client是一个java客户端，用于简化eurekaserver的交互，客户
 从服务注册表中把这个服务节点移除掉（默认周期为90秒）
 
 ### cap是什么  
-c（consistency） 强一致性
-a（availability）可用性
-p（分区容错性）  
+c（consistency） 强一致性  
+a（availability）可用性  
+p（分区容错性）    
 ### cap 核心原理
 一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求  
 根据cap原理，分成了满足ca原则，满足cp原则和满足ap原则三大类：  
@@ -48,7 +50,7 @@ eureka在设计时优先保证可用性。eureka各个节点都是平等的，�
 
 因此，eureka可以很好的应对因网络故障导致部分节点失去联系的情况   
 
-<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/fuwuzhucexiaofei.jpg?raw=true" width="80%">  
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/fuwuzhucexiaofei.jpg?raw=true" width="50%">  
 
 ## ribbon
 Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡的工具。  
@@ -70,14 +72,12 @@ Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡�
 此时客户端可以准备一个fallbackFactory,返回一个默认值（缺省值）,整体的服务水平下降了
 比直接挂掉强
 
-### 服务监控
+### 服务监控操作  
 springcloud-consumer-hystrix-dashboard  
-springcloud-provider-dept-8001
+springcloud-provider-dept-8001  
 
-http://localhost:8001/actuator/hystrix.stream
+http://localhost:8001/actuator/hystrix.stream  
 http://localhost:9001/hystrix
-监控：
-http://localhost:8001/actuator/hyxtrix.stream
 
 
 ## Zuul
@@ -90,4 +90,24 @@ Zuul是Spring Cloud全家桶中的微服务API网关。
 负载卸载 预先为每种类型的请求分配容量，当请求超过容量时自动丢弃。
 静态资源处理 直接在边界返回某些响应。
 
+### zuul的工作原理  
+#### 1、过滤器机制  
+
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/zuul%20yuanlitu.png?raw=true">  
+
+zuul的核心是一系列的filters, 其作用可以类比Servlet框架的Filter，或者AOP。
+zuul把Request route到 用户处理逻辑 的过程中，这些filter参与一些过滤处理，比如Authentication，Load Shedding等。  
+
+#### 2、过滤器的生命周期  
+
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/zuul%20shengmingzhouqi.png?raw=true">
+
+Zuul请求的生命周期如图，该图详细描述了各种类型的过滤器的执行顺序。  
+Zuul大部分功能都是通过过滤器来实现的。Zuul中定义了四种标准过滤器类型，这些过滤器类型对应于请求的典型生命周期  
+1、PRE：这种过滤器在请求被路由之前调用。我们可利用这种过滤器实现身份验证、在集群中选择请求的微服务、记录调试信息等  
+2、ROUTING：这种过滤器将请求路由到微服务。这种过滤器用于构建发送给微服务的请求，并使用Apache HttpClient或Netfilx Ribbon请求微服务  
+3、POST：这种过滤器在路由到微服务以后执行。这种过滤器可用来为响应添加标准的HTTP Header、收集统计信息和指标、将响应从微服务发送给客户端等  
+4、ERROR：在其他阶段发生错误时执行该过滤器  
+
+### 操作
 http://zuul9527.com:9527/mydept/dept/get/1
