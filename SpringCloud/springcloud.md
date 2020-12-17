@@ -17,19 +17,19 @@ eureka是一个基于rest的服务，用于定位服务，以实现云端中间�
 ## eureka的基本架构
 spring cloud封装了netflix公司开发的eureka模块来实现服务注册与发现  
 eureka采用了c-s的架构设计，eureka server作为服务注册功能的服务器，他是服务注册中心  
-而系统的其他问服务。使用eureka的客户端连接到eurekaserver并维持心跳连接。
+而系统的其他问服务。使用eureka的客户端连接到eureka server并维持心跳连接。
 这样系统的维护人员就可以通过eureka server来监控系统中各个微服务是否正常运行，
-spring cloud的一些其他模块（比如zuul）就可以通过eurekaserver来发现
+spring cloud的一些其他模块（比如zuul）就可以通过eureka server来发现
 系统中的其他微服务，并执行相关的逻辑；  
-eureka client是一个java客户端，用于简化eurekaserver的交互，客户端同时也具备一个内置的，使用轮询
+eureka client是一个java客户端，用于简化eureka server的交互，客户端同时也具备一个内置的，使用轮询
 负载算法的负载均衡器。在启动后，将会向eureka server发送心跳（默认周期为30秒）
 如果eureka server在多个心跳周期内没有接收到某个节点的心跳，eureka server将会
 从服务注册表中把这个服务节点移除掉（默认周期为90秒）
 
 ### CAP是什么  
-C(Consistency) 强一致性
-A(Availability) 可用性
-P(Partition tolerance) 分区容错性
+C(Consistency) 强一致性  
+A(Availability) 可用性  
+P(Partition tolerance) 分区容错性  
 
 ### CAP 核心原理
 一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求  
@@ -50,7 +50,12 @@ eureka在设计时优先保证可用性。eureka各个节点都是平等的，�
 
 因此，eureka可以很好的应对因网络故障导致部分节点失去联系的情况   
 
+### 实践
+
 <img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/fuwuzhucexiaofei.jpg?raw=true" width="50%">  
+
+
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/jiandanjuqun.jpg?raw=true" width="50%">
 
 ## ribbon
 Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡的工具。  
@@ -61,18 +66,27 @@ Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡�
 #### 进程式LB
 将LB逻辑集成到消费方，消费方从服务注册中心获知哪些地址可用，然后自己再从这些地址中选出一个合适的服务器
 
-## [Hystrix](https://github.com/Netflix/Hystrix/wiki)
+### 常用Rule
+RoundRobinRule: 轮询
+RandomRule: 随机
+AvailabilityFilteringRule: 会先过滤掉跳闸的服务(即访问故障的服务),轮询
+RetryRule: 重试 会先按照轮询获取服务，如果服务获取失败，就会在指定的时间内进行重试
 
-[服务雪崩、服务熔断、服务降级](https://www.cnblogs.com/rjzheng/p/10340176.html)
-### 服务雪崩
-### 服务熔断：服务端  
-某个服务超时或者异常，引起服务熔断
-### 服务降级：客户端  
-一般从整体网站请求负荷考虑，当某个服务熔断或者关闭之后，服务将不再被调用，
-此时客户端可以准备一个fallbackFactory,返回一个默认值（缺省值）,整体的服务水平下降了
-比直接挂掉强
+## Feign
+Feign是声明式的Web Service客户端，它让微服务之间的调用变得更简单了，类似Controller调用 Service， Spring Cloud集成了Ribbon 和 Eureka，可在使用Feign时提供负载均衡的http客户端  
+Feign做了进一步封装，由他来帮助我们定义和实现依赖服务接口的定义，在Feign的实现下，只需要创建一个接口并使用注解的方式来配置它(类似于以前Dao接口标注Mapper注解，现在是一个微服务接口上面标注一个Feign注解即可)，即可完成服务提供方的接口绑定，简化了使用Spring Cloud Ribbon时，自动封装服务调用客户端的开发量
 
-### 操作  
+## Hystrix   (https://github.com/Netflix/Hystrix/wiki)
+是一个用于处理分布式系统的延迟和容错的开源库，在分布式系统里，许多依赖不可避免的会调用失败，比如超时，异常等，Hystrix能够保证在一个依赖出问题的情况下，不会导致整体服务失败，避免级联故障，以提高分布式系统的弹性。  
+断路器: 本身是一种开关装置，当某个服务单元发生故障之后，通过断路器的故障监控(类似熔断保险丝)，向调用方返回一个服务预期的，可处理的备选响应(FallBack)，而不是长时间的等待或者抛出调用方法无法处理的异常，这样就可以保证了服务调用方的线程不会被长时间，不必要的占用，从而避免了故障在分布式系统中的蔓延，乃至雪崩  
+Hystrix 默认 5秒内20次调用失败就会启动熔断机制
+
+### 服务雪崩、服务熔断、服务降级 (https://www.cnblogs.com/rjzheng/p/10340176.html)
+
+### Dashboard
+
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/Hystrix.jpg?raw=true" width="50%">
+
 http://localhost:8001/actuator/hystrix.stream  
 http://localhost:9001/hystrix
 
