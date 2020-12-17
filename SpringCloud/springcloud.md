@@ -8,13 +8,13 @@ Spring Cloud为开发人员提供了工具，以快速构建分布式系统中�
 Spring Cloud 离不开Spring Boot,属于依赖关系，Spring Boot专注于快速、方便的开发单个个体微服务，Spring Cloud关注全局的服务治理框架  
 
 ## eureka服务注册与发现  
-## 什么是 eureka
+### 什么是 eureka
 eureka是netflix的一个子模块，也是核心模块之一。  
 eureka是一个基于rest的服务，用于定位服务，以实现云端中间层服务发现和故障，
 服务注册与发现对于微服务来说是非常重要的，有了服务注册与发现，只需要使用服务的
 标识符，就可以访问到服务，而不需要修改服务调用的配置文件了
 
-## eureka的基本架构
+### eureka的基本架构
 spring cloud封装了netflix公司开发的eureka模块来实现服务注册与发现  
 eureka采用了c-s的架构设计，eureka server作为服务注册功能的服务器，他是服务注册中心  
 而系统的其他问服务。使用eureka的客户端连接到eureka server并维持心跳连接。
@@ -88,8 +88,7 @@ Hystrix 默认 5秒内20次调用失败就会启动熔断机制
 <img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/Hystrix.jpg?raw=true" width="50%">
 
 http://localhost:8001/actuator/hystrix.stream  
-http://localhost:9001/hystrix
-
+http://localhost:9001/hystrix  
 
 ## Zuul
 Zuul是Spring Cloud全家桶中的微服务API网关。  
