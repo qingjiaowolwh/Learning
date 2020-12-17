@@ -6,6 +6,8 @@
 Spring Cloud是分布式微服务架构下的一站式解决方案，是各个微服务架构落地技术的集合体，俗称微服务全家桶  
 Spring Cloud为开发人员提供了工具，以快速构建分布式系统中的一些常见模式（例如，配置管理，服务发现，断路器，智能路由，微代理，控制总线，一次性令牌，全局锁，领导选举，分布式会话，群集状态）。分布式系统的协调导致样板式样，并且使用Spring Cloud开发人员可以快速实现这些样板的服务和应用程序。   
 Spring Cloud 离不开Spring Boot,属于依赖关系，Spring Boot专注于快速、方便的开发单个个体微服务，Spring Cloud关注全局的服务治理框架  
+### Spring Boot
+Spring Boot本身并不提供Spring框架的核心特性以及扩展功能，只是用于快速、敏捷地开发新一代基于Spring框架的应用程序。也就是说，它并不是用来替代Spring 的解决方案，而是和Spring 框架紧密结合用于提升Spring 开发者体验的工具。  
 
 ## eureka服务注册与发现  
 ### 什么是 eureka
@@ -66,11 +68,11 @@ Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡�
 #### 进程式LB
 将LB逻辑集成到消费方，消费方从服务注册中心获知哪些地址可用，然后自己再从这些地址中选出一个合适的服务器
 
-### 常用Rule
-RoundRobinRule: 轮询
-RandomRule: 随机
-AvailabilityFilteringRule: 会先过滤掉跳闸的服务(即访问故障的服务),轮询
-RetryRule: 重试 会先按照轮询获取服务，如果服务获取失败，就会在指定的时间内进行重试
+### 常用Rule  
+RoundRobinRule: 轮询  
+RandomRule: 随机  
+AvailabilityFilteringRule: 会先过滤掉跳闸的服务(即访问故障的服务),轮询  
+RetryRule: 重试 会先按照轮询获取服务，如果服务获取失败，就会在指定的时间内进行重试  
 
 ## Feign
 Feign是声明式的Web Service客户端，它让微服务之间的调用变得更简单了，类似Controller调用 Service， Spring Cloud集成了Ribbon 和 Eureka，可在使用Feign时提供负载均衡的http客户端  
