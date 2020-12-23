@@ -6,8 +6,24 @@
 Spring Cloud是分布式微服务架构下的一站式解决方案，是各个微服务架构落地技术的集合体，俗称微服务全家桶  
 Spring Cloud为开发人员提供了工具，以快速构建分布式系统中的一些常见模式（例如，配置管理，服务发现，断路器，智能路由，微代理，控制总线，一次性令牌，全局锁，领导选举，分布式会话，群集状态）。分布式系统的协调导致样板式样，并且使用Spring Cloud开发人员可以快速实现这些样板的服务和应用程序。   
 Spring Cloud 离不开Spring Boot,属于依赖关系，Spring Boot专注于快速、方便的开发单个个体微服务，Spring Cloud关注全局的服务治理框架  
+
 ### Spring Boot
 Spring Boot本身并不提供Spring框架的核心特性以及扩展功能，只是用于快速、敏捷地开发新一代基于Spring框架的应用程序。也就是说，它并不是用来替代Spring 的解决方案，而是和Spring 框架紧密结合用于提升Spring 开发者体验的工具。  
+
+### 集群 分布式
+
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/fenbushi%20jiqun.jpg?raw=true" width="40%">
+
+#### 集群  
+单机处理到达瓶颈的时候，你就把单机复制几份，这样就构成了一个“集群”。
+集群中每台服务器就叫做这个集群的一个“节点”，所有节点构成了一个集群。
+每个节点都提供相同的服务，那么这样系统的处理能力就相当于提升了好几倍（有几个节点就相当于提升了这么多倍）。
+但问题是用户的请求究竟由哪个节点来处理呢？最好能够让此时此刻负载较小的节点来处理，这样使得每个节点的压力都比较平均。
+要实现这个功能，就需要在所有节点之前增加一个“调度者”的角色，用户的所有请求都先交给它，
+然后它根据当前所有节点的负载情况，决定将这个请求交给哪个节点处理。这个“调度者”有个牛逼了名字——负载均衡服务器。
+#### 分布式  
+分布式结构就是将一个完整的系统，按照业务功能，拆分成一个个独立的子系统，在分布式结构中，每个子系统就被称为“服务”
+。这些子系统能够独立运行在web容器中，它们之间通过RPC（Remote Procedure Call 远程过程调用）方式通信。
 
 ## eureka服务注册与发现  
 ### 什么是 eureka
@@ -59,29 +75,35 @@ eureka在设计时优先保证可用性。eureka各个节点都是平等的，�
 
 <img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/jiandanjuqun.jpg?raw=true" width="50%">
 
-## ribbon
-Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡的工具。  
+## Feign  
+Feign是声明式的Web Service客户端，它让微服务之间的调用变得更简单了，类似Controller调用 Service， Spring Cloud集成了Ribbon 和 Eureka，可在使用Feign时提供负载均衡的http客户端  
+Feign做了进一步封装，由他来帮助我们定义和实现依赖服务接口的定义，在Feign的实现下，只需要创建一个接口并使用注解的方式来配置它(类似于以前Dao接口标注Mapper注解，现在是一个微服务接口上面标注一个Feign注解即可)，即可完成服务提供方的接口绑定，简化了使用Spring Cloud Ribbon时，自动封装服务调用客户端的开发量
+
+## Ribbon  
+Spring Cloud Ribbon是基于Netflix ribbon实现的一套客户端负载均衡的工具。
+  
 ### 负载均衡分类  
 #### 集中式LB  
 即在服务的消费方和提供方之间使用独立的LB设施，如Nginx:
-方向代理服务器，由该设施负责把访问请求通过某种策略转发至服务的提供方
-#### 进程式LB
+方向代理服务器，由该设施负责把访问请求通过某种策略转发至服务的提供方  
+
+#### 进程式LB  
 将LB逻辑集成到消费方，消费方从服务注册中心获知哪些地址可用，然后自己再从这些地址中选出一个合适的服务器
 
-### 常用Rule  
-RoundRobinRule: 轮询  
-RandomRule: 随机  
-AvailabilityFilteringRule: 会先过滤掉跳闸的服务(即访问故障的服务),轮询  
-RetryRule: 重试 会先按照轮询获取服务，如果服务获取失败，就会在指定的时间内进行重试  
+### 负载均衡策略 
 
-## Feign
-Feign是声明式的Web Service客户端，它让微服务之间的调用变得更简单了，类似Controller调用 Service， Spring Cloud集成了Ribbon 和 Eureka，可在使用Feign时提供负载均衡的http客户端  
-Feign做了进一步封装，由他来帮助我们定义和实现依赖服务接口的定义，在Feign的实现下，只需要创建一个接口并使用注解的方式来配置它(类似于以前Dao接口标注Mapper注解，现在是一个微服务接口上面标注一个Feign注解即可)，即可完成服务提供方的接口绑定，简化了使用Spring Cloud Ribbon时，自动封装服务调用客户端的开发量
+<img src="https://github.com/qingjiaowolwh/Learning/blob/main/SpringCloud/img/Robbon%20rule.jpg?raw=true" width="80%"> 
 
 ## Hystrix   (https://github.com/Netflix/Hystrix/wiki)
 是一个用于处理分布式系统的延迟和容错的开源库，在分布式系统里，许多依赖不可避免的会调用失败，比如超时，异常等，Hystrix能够保证在一个依赖出问题的情况下，不会导致整体服务失败，避免级联故障，以提高分布式系统的弹性。  
 断路器: 本身是一种开关装置，当某个服务单元发生故障之后，通过断路器的故障监控(类似熔断保险丝)，向调用方返回一个服务预期的，可处理的备选响应(FallBack)，而不是长时间的等待或者抛出调用方法无法处理的异常，这样就可以保证了服务调用方的线程不会被长时间，不必要的占用，从而避免了故障在分布式系统中的蔓延，乃至雪崩  
-Hystrix 默认 5秒内20次调用失败就会启动熔断机制
+
+### 断路器开启条件  
+1.当满足一定阈值的时候（默认10秒内超过20个请求此时）  
+2.当失败率达到一定的时候（默认10秒内超过50%请求失败）  
+3.当达到以上阈值，断路器将会开启  
+4.当开启的时候，所有请求都不会进行转发  
+5.一段时间之后（默认五秒），这个时候断路器是半开状态，会让其中一个请求进行转发。如果成功，断路器会关闭，若失败继续开启。重复4和5  
 
 ### 服务雪崩、服务熔断、服务降级 (https://www.cnblogs.com/rjzheng/p/10340176.html)
 
