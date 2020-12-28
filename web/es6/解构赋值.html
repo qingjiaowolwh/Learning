@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="ad">
+
+
+</div>
+<script>
+    //需求-1  点击 div 2s 后颜色变成 粉色
+    let ad = document.getElementById('ad')
+    ad.addEventListener('click', function () {
+        //保存 this的值 职位ad  或者使用箭头函数
+        let _this = this;
+        //定时器
+        setTimeout(function () {
+            console.log(this)
+            _this.style.background = 'pink'
+        }, 2000)
+    })
+    //需求-2 从数组中返回偶数的元素
+    const arr = [1, 6, 9, 10, 100, 25]
+    // const result = arr.filter(function (item) {
+    //     if (item % 2 === 0) {
+    //         return true
+    //     } else {
+    //         return false
+    //     }
+    // })
+
+    const result =arr.filter(item =>item % 2 === 0)
+
+    console.log(result)
+
+    //适合函数与this无关的回调 定时器 数组的方法回调
+    //不适合  事件回调，对象的方法
+    {
+
+    }
+</script>
+</body>
+</html>

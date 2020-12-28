@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            display: flex;
+            width: 80%;
+            height: 300%;
+            background-color: pink;
+            /*主轴 默认row*/
+            /*flex-direction: row;*/
+            flex-direction: row-reverse;
+            /*flex-direction: column;*/
+            /*对齐方式左右贴边，剩余平分*/
+            /*justify-content: space-between;*/
+            /*换行*/
+            /*flex-wrap: wrap;*/
+            /*恻轴 单行*/
+            /*align-items: center;*/
+            /*恻轴 多行*/
+            /*align-content: center;*/
+            /*flex-direction flex-wrap的符合属性*/
+            /*flex-flow: row wrap;*/
+        }
+        div span{
+            width: 150px;
+            height: 100px;
+            background-color: peru;
+            margin-right: 5px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+</body>
+</html>

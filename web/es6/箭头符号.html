@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //ES6
+
+    // let fn=function () {
+    //
+    // }
+
+    let fn=(a,b)=>{
+        return a+b
+    }
+    //调用函数
+    let result=fn(1,2)
+    console.log(result)
+
+    //1.this是静态的 this始终指向函数声明时所在作用域下的this的值
+    function getName() {
+        console.log(this.name)
+    }
+    let getName2=()=>{
+        console.log(this.name)
+    }
+    //设置window对象的name属性
+    window.name='尚硅谷'
+    const school ={
+        name:'ATGUIGU'
+    }
+    //直接调用
+    getName()
+    getName2()
+
+    //call方法调用
+    getName.call(school) //变
+    getName2.call(school) //不变
+
+    //简写
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div></div>
+<div></div>
+<div></div>
+<body>
+<script>
+
+    //1合并
+    const kuaizi =['王太利','小样']
+    const fenghuang=['曾毅','玲花']
+    //ES5
+    const hebing =kuaizi.concat(fenghuang)
+    console.log(hebing)
+    //ES6
+    const hebing2=[...kuaizi,...fenghuang]
+
+    //将位数组转成数组
+    const divs=document.querySelectorAll('div')
+
+    const divArr=[...divs]
+    console.log(divArr)
+
+</script>
+</body>
+</html>
