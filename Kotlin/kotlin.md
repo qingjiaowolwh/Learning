@@ -1,3 +1,4 @@
+# [Kotlin 学习](https://www.cnblogs.com/Jetictors/p/9227498.html)
 # [Kotlin 协程真的比 Java 线程更高效吗？](https://zhuanlan.zhihu.com/p/102124182)
 1、Kotlin-JVM中所谓的协程是假协程，本质上还是一套基于原生Java Thread API 的封装。和Go中的协程完全不是一个东西，不要混淆,更谈不上什么性能更好。
 2、Kotlin-JVM中所谓的协程挂起，就是开启了一个子线程去执行任务（不会阻塞原先Thread的执行，要理解对于CPU来说，在宏观上每个线程得到执行的概率都是相等的），仅此而已，没有什么其他高深的东西。
