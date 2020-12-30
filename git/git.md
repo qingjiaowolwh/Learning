@@ -47,6 +47,8 @@ git stash drop "test-cmd-stash"
 ### 清除所有stash
 git stash clear  
 
+### 大文件上传下载 git-lfs
+https://zzz.buzz/zh/2016/04/19/the-guide-to-git-lfs/
 
 ### Git global setup  
 git config --global user.name "林武华"  
