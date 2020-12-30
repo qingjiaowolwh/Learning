@@ -27,7 +27,7 @@ git merge yourbranch
 ### 删除本地分支
 git branch -d dev  
 ### 删除远程分支  
-git push origin -d dev
+git push origin --delete dev
 
 ### 撤回commit  后面数字撤回几次提交  代码仍然会保留
 git reset --soft HEAD~1
