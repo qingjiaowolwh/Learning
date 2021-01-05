@@ -91,7 +91,7 @@ public enum State {
    sleep 可以在任何地方睡
 
 
-## 3、 LOCK锁（重点）
+## 3、 LOCK锁 重点
 
 > 传统Synchronized  
 
