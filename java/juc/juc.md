@@ -1,5 +1,5 @@
 
-- [1、 什么是JUC](##1-----juc)
+- [1、 什么是JUC](##1、 什么是JUC)
 - [2、进程与线程](#2------)
   * [开启线程方式](#------)
   * [Java真的可以开启线程吗？](#java----------)
@@ -29,8 +29,6 @@
   * [2、可重入锁](#2-----)
   * [3、自旋锁](#3----)
   * [4、死锁](#4---)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 ## 1、 什么是JUC
