@@ -48,11 +48,11 @@ git stash drop "test-cmd-stash"
 git stash clear  
 
 ### [rebase](http://jartto.wang/2018/12/11/git-rebase/)
-Git rebase 不会取回代码 要用git fetch先取回， git rebase 是合并代码。
-（1）首先用git fetch返回服务器上的代码
-（2）首先用git rebase origin/master 合并
-（3）如果发生冲突了会提示， 然后可以使用git diff查看冲突， 在手工改掉冲突， 在用git add ‘文件名’ 添加修改后文件，最后用git rebase --continue继续没完成的合并
-（4）最后就可以用git push 更新到服务器上去。
+Git rebase 不会取回代码 要用git fetch先取回， git rebase 是合并代码。  
+（1）首先用git fetch返回服务器上的代码  
+（2）首先用git rebase origin/master 合并  
+（3）如果发生冲突了会提示， 然后可以使用git diff查看冲突， 在手工改掉冲突， 在用git add ‘文件名’ 添加修改后文件，最后用git rebase --continue继续没完成的合并  
+（4）最后就可以用git push 更新到服务器上去。  
 
 
 ### 大文件上传下载 git-lfs
