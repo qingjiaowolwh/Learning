@@ -17,3 +17,5 @@ Dalvik  virtual machine 和Java virtual machine    （dvm和jvm）的区别
 **上面有7个回答，面试时只需要说明jvm dvm分别是什么东西，然后dvm负责的任务是什么，jvm负责的任务是什么即可。也就是说答出dvm jvm的概念，还有区别的前三点即可。当然如果你有能力说出下方的4567，面试效果会更好。**
 
 ## [热修复原理](https://juejin.cn/post/6844903985602789384)
+
+## [美团技术团队](https://tech.meituan.com/archives)
