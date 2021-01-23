@@ -47,6 +47,9 @@ git stash drop "test-cmd-stash"
 ### 清除所有stash
 git stash clear  
 
+### [rebase](http://jartto.wang/2018/12/11/git-rebase/)
+
+
 ### 大文件上传下载 git-lfs
 https://zzz.buzz/zh/2016/04/19/the-guide-to-git-lfs/
 
