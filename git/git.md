@@ -59,11 +59,11 @@ Git rebase 不会取回代码 要用git fetch先取回， git rebase 是合并�
 https://zzz.buzz/zh/2016/04/19/the-guide-to-git-lfs/
 
 ### Git global setup  
-git config --global user.name "林武华"  
-git config --global user.email "linwuhua@megvii.com"  
+git config --global user.name ""  
+git config --global user.email ""  
 
 ### Create a new repository
-git clone git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git
+git clone git@test.git
 cd yapi-diff
 touch README.md
 git add README.md
@@ -73,7 +73,7 @@ git push -u origin master
 ### Push an existing folder
 cd existing_folder  
 git init  
-git remote add origin git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git  
+git remote add origin git@test.git  
 git add .  
 git commit -m "Initial commit"  
 ### 将会关联到远程的master 分支上，以后就可以git push不指定参数了
@@ -82,6 +82,6 @@ git push -u origin master
 ### Push an existing Git repository
 cd existing_repo  
 git remote rename origin old-origin  
-git remote add origin git@git-pd.megvii-inc.com:linwuhua/yapi-diff.git  
+git remote add origin git@test.git  
 git push -u origin --all  
 git push -u origin --tags  
