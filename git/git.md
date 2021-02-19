@@ -47,6 +47,9 @@ git stash drop "test-cmd-stash"
 ### 清除所有stash
 git stash clear  
 
+###
+git config --global credential.helper store
+
 ### [rebase](http://jartto.wang/2018/12/11/git-rebase/)
 Git rebase 不会取回代码 要用git fetch先取回， git rebase 是合并代码。  
 （1）首先用git fetch返回服务器上的代码  
