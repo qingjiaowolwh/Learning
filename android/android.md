@@ -18,4 +18,6 @@ Dalvik  virtual machine 和Java virtual machine    （dvm和jvm）的区别
 
 ## [热修复原理](https://juejin.cn/post/6844903985602789384)
 
+## [Service AIDL之重连方法](https://www.jianshu.com/p/476abecc7292)
+
 ## [美团技术团队](https://tech.meituan.com/archives)
