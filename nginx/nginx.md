@@ -21,7 +21,7 @@
     if ($request = OPTIONS){
       return 200;
     }
-    proxy_pass http://api-insight.cbg.megvii-inc.com/api/user/login;
+    proxy_pass http://localhost/api/user/login;
   }
   location / {
     root   /opt/web/portal/yapi-diff;
