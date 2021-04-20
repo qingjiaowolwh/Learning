@@ -1,4 +1,4 @@
-## [android 面试题](https://juejin.cn/post/6844903891625050119)
+## [android 开发题](https://juejin.cn/post/6844903891625050119)
 ## [android 进阶到高级-突破篇](https://pangrongxian.github.io/2017/07/17/Android%20%E8%BF%9B%E9%98%B6%E5%88%B0%E9%AB%98%E7%BA%A7%20-%20%E7%AA%81%E7%A0%B4%E7%AF%87/)
 
 ## dvm和jvm都是什么东西，有什么区别？
@@ -21,3 +21,5 @@ Dalvik  virtual machine 和Java virtual machine    （dvm和jvm）的区别
 ## [Service AIDL之重连方法](https://www.jianshu.com/p/476abecc7292)
 
 ## [美团技术团队](https://tech.meituan.com/archives)
+
+## [启智观-ActivityManagerService](https://duanqz.github.io/2016-07-15-AMS-LaunchProcess#Android%E5%90%AF%E6%99%BA%E8%A7%82)
