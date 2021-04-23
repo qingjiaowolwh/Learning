@@ -25,5 +25,7 @@ Dalvik  virtual machine 和Java virtual machine    （dvm和jvm）的区别
 ## [启智观-ActivityManagerService](https://duanqz.github.io/2016-07-15-AMS-LaunchProcess#Android%E5%90%AF%E6%99%BA%E8%A7%82)
 
 ## ADB
-adb shell dumpsys meminfo  进程的内存专用后可以接包名
-adb shell dumpsys activities  activity栈栈信息
+adb shell dumpsys meminfo  进程的内存专用后可以接包名  
+adb shell dumpsys activities  activity栈栈信息  
+
+## [AIDL DeadObjectException 死亡代理](https://blog.csdn.net/jqwei2/article/details/98611551)
