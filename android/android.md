@@ -16,3 +16,6 @@ adb shell dumpsys activities  activity栈栈信息
 ## [AIDL DeadObjectException 死亡代理](https://blog.csdn.net/jqwei2/article/details/98611551)
 
 ## [https](https://www.runoob.com/w3cnote/http-vs-https.html)
+1.什么是对称加密,非对称加密对称加密是指加解密使用的是同样的密钥非对称加密是指加解密使用的密钥不同。  
+2.对称加密的优缺点对称加密的特点是简单快速。 密钥越大，加密越强，但加解密过程越慢。  
+3.非对称加密的优缺点非对称加密使用了一对密钥，公钥和私钥。  
