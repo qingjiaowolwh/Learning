@@ -22,3 +22,11 @@ adb shell dumpsys activities  activity栈栈信息
 
 ## 反射机制
 加载完类之后，在堆中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象包含了类的完整结构信息。通过这个对象得到类的结构。这个对象就像一面镜子，透过这个镜子看到类的结构，所以，形象的称之为反射
+
+## [ViewModel](https://deskid.github.io/2017/07/28/ViewModel/)
+1、ViewModel 数据层 和 UI Controller 之间分离的很干净。UI Controller 不用负责获取数据，也不用在重建时负责数据的有效性。  
+2、ViewModel 数据层能感知到 UI Controller 的生命周期：保证 UI Controller 重建后，持有的是同一个ViewModel数据实例; UI Controller 结束生命周期后，系统自动调用ViewModel的clear()，释放资源。
+配合 LiveData 使用效果更佳。  
+3、之前放到onSaveInstanceState()的复杂数据，现在可以放到ViewModel（系统UI相关的除外）  
+4、由于职责划分更加清晰，测试更方便。  
+重点：Fragment在设置setRetainInstance(true)后，当 host Activity re-creation 时，fragment不会被destroyed，而是keep在内存中。当re-creation时，fragment 跳过 onDestroy() 和 onCreate()生命周期，并重新执行一遍 onAttach() 和 onDetach()之间的回调。
