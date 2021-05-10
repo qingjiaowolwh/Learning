@@ -39,3 +39,9 @@ observeForever 需要手动移除 根据版本更新
 3、之前放到onSaveInstanceState()的复杂数据，现在可以放到ViewModel（系统UI相关的除外）  
 4、由于职责划分更加清晰，测试更方便。  
 重点：Fragment在设置setRetainInstance(true)后，当 host Activity re-creation 时，fragment不会被destroyed，而是keep在内存中。当re-creation时，fragment 跳过 onDestroy() 和 onCreate()生命周期，并重新执行一遍 onAttach() 和 onDetach()之间的回调。
+
+1、无需包装：直接使用基本类型值，不需要包装成对象。   
+2、无需hash，无需比对Key对象  直接使用基本类型值排序索引和判断相等，无碰撞，无需调用hashCode方法，无需equals比较。   
+3、更小的内部数组：相比于ArrayMap，无需单独的hash排序数组，内部只需等长的两个数组分别存放Key和Value   
+4、延迟删除：对于移除操作，SparseArray并不是在每次remove操作直接移动数组元素，而是用一个删除标记将对应key的value标记为已删除，并标记需要回收，等待下次添加、扩容等需要移动数组元素的地方统一操作，进一步提升性能。   
+5、有序：所有键值对均是按照基本类型key的自然排序，支持下标访问(keyAt方法和valueAt方法)，迭代遍历和数组相同
