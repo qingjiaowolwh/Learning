@@ -24,8 +24,11 @@ adb shell dumpsys activities  activity栈栈信息
 加载完类之后，在堆中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象包含了类的完整结构信息。通过这个对象得到类的结构。这个对象就像一面镜子，透过这个镜子看到类的结构，所以，形象的称之为反射
 
 ## DataBinding
-1、生成一份-layout.xml  一次递归找到所有的View(相比findViewById性能提高)
-2、ObservableField 继承Observable 跟新相应的属性
+1、生成一份-layout.xml  一次递归找到所有的View(相比findViewById性能提高,-layout目录：intermediates-->data_binding_layout_info_type_merge，布局目录intermediates-->mergeDebugResources-->stripped.dir，BindingImpl目录:generated-->source-->apt-->包路径-->databinding下)
+2、ObservableField 继承Observable 跟新相应的属性（BR表）
+
+1、SparseIntArray 存放id,index--》ActivityWarningDetailBindingImpl赋值完之后清除tag
+2、Bind根据layoutId找到localizedLayoutId，mapBindings方法View根据id找到-layout的tag(id)找到对应的index
 
 ## [LiveData](https://www.jianshu.com/p/d66b2fd4d918)
 observe传入--》LifecycleOwner只有一个作用获取--》LifecycleRegistry（继承Lifecycle，activity、fragment中实现了LifecycleOwner可以获取到LifecycleRegistry，用于获取可以获取生命周期相关数据，mObserverMap管理监听）
