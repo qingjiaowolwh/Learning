@@ -24,8 +24,8 @@ adb shell dumpsys activities  activity栈栈信息
 加载完类之后，在堆中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象包含了类的完整结构信息。通过这个对象得到类的结构。这个对象就像一面镜子，透过这个镜子看到类的结构，所以，形象的称之为反射
 
 ## [DataBinding](https://www.bilibili.com/video/BV1Zv411k7xe?p=2&spm_id_from=pageDriver)
-1、生成一份-layout.xml,生成一份和原布局一样的添加tag:  一次递归找到所有的View(相比findViewById性能提高,-layout目录：intermediates-->data_binding_layout_info_type_merge，布局目录intermediates-->mergeDebugResources-->stripped.dir，BindingImpl目录:generated-->source-->apt-->包路径-->databinding下)
-2、ObservableField 继承Observable 跟新相应的属性（BR表）
+1、生成一份-layout.xml,生成一份和原布局一样的添加tag:  一次递归找到所有的View(相比findViewById性能提高,-layout目录：intermediates-->data_binding_layout_info_type_merge，布局目录intermediates-->mergeDebugResources-->stripped.dir，BindingImpl目录:generated-->source-->apt-->包路径-->databinding下)   
+2、ObservableField 继承Observable 跟新相应的属性（notifyPropertyChanged(BR.属性)表）
 
 1、SparseIntArray 存放id,index--》ActivityWarningDetailBindingImpl赋值完之后清除tag
 2、Bind根据layoutId找到localizedLayoutId，mapBindings方法View根据id找到-layout的tag(id)找到对应的index
