@@ -23,6 +23,15 @@ adb shell dumpsys activities  activity栈栈信息
 ## 反射机制
 加载完类之后，在堆中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象包含了类的完整结构信息。通过这个对象得到类的结构。这个对象就像一面镜子，透过这个镜子看到类的结构，所以，形象的称之为反射
 
+## DataBinding
+1、生成一份-layout.xml
+2、ObservableField 继承Observable
+
+## [LiveData](https://www.jianshu.com/p/d66b2fd4d918)
+observe传入--》LifecycleOwner只有一个作用获取--》LifecycleRegistry（继承Lifecycle，activity、fragment中实现了LifecycleOwner可以获取到LifecycleRegistry，用于获取可以获取生命周期相关数据，mObserverMap管理监听）
+observe自动移除
+observeForever 需要手动移除 根据版本更新
+
 ## [ViewModel](https://deskid.github.io/2017/07/28/ViewModel/)
 1、ViewModel 数据层 和 UI Controller 之间分离的很干净。UI Controller 不用负责获取数据，也不用在重建时负责数据的有效性。  
 2、ViewModel 数据层能感知到 UI Controller 的生命周期：保证 UI Controller 重建后，持有的是同一个ViewModel数据实例; UI Controller 结束生命周期后，系统自动调用ViewModel的clear()，释放资源。
