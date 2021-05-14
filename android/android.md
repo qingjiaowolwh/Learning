@@ -45,6 +45,8 @@ observeForever 需要手动移除 根据版本更新
 重点：Fragment在设置setRetainInstance(true)后，当 host Activity re-creation 时，fragment不会被destroyed，而是keep在内存中。当re-creation时，fragment 跳过 onDestroy() 和 onCreate()生命周期，并重新执行一遍 onAttach() 和 onDetach()之间的回调。
 5、onDestroy时判断  mChangingConfigurations为false clear
 
+## [Arouter](https://juejin.cn/post/6885932290615509000)
+
 ## SparseArray
 1、无需包装：直接使用基本类型值，不需要包装成对象。   
 2、无需hash，无需比对Key对象  直接使用基本类型值排序索引和判断相等，无碰撞，无需调用hashCode方法，无需equals比较。   
