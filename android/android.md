@@ -13,6 +13,8 @@
 adb shell dumpsys meminfo  进程的内存专用后可以接包名  
 adb shell dumpsys activities  activity栈栈信息  
 
+## [Binder机制](https://blog.csdn.net/carson_ho/article/details/73560642)
+
 ## [AIDL DeadObjectException 死亡代理](https://blog.csdn.net/jqwei2/article/details/98611551)
 
 ## [https](https://www.runoob.com/w3cnote/http-vs-https.html)
@@ -49,3 +51,15 @@ observeForever 需要手动移除 根据版本更新
 3、更小的内部数组：相比于ArrayMap，无需单独的hash排序数组，内部只需等长的两个数组分别存放Key和Value   
 4、延迟删除：对于移除操作，SparseArray并不是在每次remove操作直接移动数组元素，而是用一个删除标记将对应key的value标记为已删除，并标记需要回收，等待下次添加、扩容等需要移动数组元素的地方统一操作，进一步提升性能。   
 5、有序：所有键值对均是按照基本类型key的自然排序，支持下标访问(keyAt方法和valueAt方法)，迭代遍历和数组相同
+
+## Activity启动流程  
+android-26
+scheduleLaunchActivity（H发送消息）--》performLaunchActivity
+1、创建LoadedApk对象   
+2、创建ContextImpl对象   
+3、获取ClassLoader， 调用mInstrumentation创建Activity对象(通过反射)  
+4、创建Application对象、然后调用attach（attach中attachBaseContext-->LoadedApk）
+、onCreate（通过反射）  
+5、将Application/ContextImpl都attach到Activity对象  
+6、执行回调onCreate、执行回调onStart、执行回调onStart
+
