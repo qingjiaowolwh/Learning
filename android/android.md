@@ -69,3 +69,5 @@ scheduleLaunchActivity（H发送消息）--》performLaunchActivity
 6、执行回调onCreate、执行回调onStart、执行回调onStart
 
 ## [apk打包流程](https://blog.csdn.net/aha_jasper/article/details/104944929)
+
+## [Gralde依赖问题](https://segmentfault.com/a/1190000015805844)
