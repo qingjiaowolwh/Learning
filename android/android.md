@@ -71,3 +71,11 @@ scheduleLaunchActivity（H发送消息）--》performLaunchActivity
 ## [apk打包流程](https://blog.csdn.net/aha_jasper/article/details/104944929)
 
 ## [Gralde依赖问题](https://segmentfault.com/a/1190000015805844)
+Gradle 默认开启了 依赖传递 意思就是 项目依赖了A，A又依赖了B和C，这时候，我们只需要写一行代码：implementation A就行了，由传递依赖导致的冲突，默认是以最高版本的依赖为准，要想查看整个项目的依赖传递关系，使用命令：
+./gradlew app:dependencies --configuration releaseRuntimeClasspath
+app是具体的module。
+releaseRuntimeClasspath是具体的variants类型。
+符号的含义：
+x.x.x (*) 该依赖已经有了，将不再重复依赖。  
+x.x.x -> x.x.x 该依赖的版本被箭头所指的版本代替。   
+x.x.x -> x.x.x(*) 该依赖的版本被箭头所指的版本代替，并且该依赖已经有了，不再重复依赖。  
