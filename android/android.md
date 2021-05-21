@@ -55,6 +55,8 @@ https://juejin.cn/post/6885932290615509000
 4、延迟删除：对于移除操作，SparseArray并不是在每次remove操作直接移动数组元素，而是用一个删除标记将对应key的value标记为已删除，并标记需要回收，等待下次添加、扩容等需要移动数组元素的地方统一操作，进一步提升性能。   
 5、有序：所有键值对均是按照基本类型key的自然排序，支持下标访问(keyAt方法和valueAt方法)，迭代遍历和数组相同
 
+## [Glide](https://www.jianshu.com/p/b85f89fce019)
+
 ## Activity启动流程  
 android-26
 scheduleLaunchActivity（H发送消息）--》performLaunchActivity
