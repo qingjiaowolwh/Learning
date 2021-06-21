@@ -69,6 +69,13 @@ scheduleLaunchActivity（H发送消息）--》performLaunchActivity
 6、执行回调onCreate、执行回调onStart、执行回调onStart
 
 ## [apk打包流程](https://blog.csdn.net/aha_jasper/article/details/104944929)
+aapt阶段：aapt工具编译res资源文件，把大部分xml文件编译成二进制文件（图片文件除外），同时生成R.Java文件和resources.arsc文件，里面保存了资源的ID和在APK中的路径。   
+aidl阶段：如果项目中有使用AIDL，那么就会把.aidl文件编译成.java文件。   
+javaCompiler阶段：将所有.java文件(包括R文件和AIDL生成的.java文件)，通过javac工具生成class文件。   
+dex阶段：将生成的.class文件和第三方库的.class文件通过dx工具生成classes.dex文件(如果有分包，那么可能有多个)。    
+apkBuilder阶段：aapt阶段中的资源文件、dex文件和第三方的非java资源包(.so)，通过apkbuilder工具生成未签名的apk包。   
+jarSigner阶段：签名，jarsigner工具，如果是debug模式用默认签名，release模式用开发者的签名。   
+zipAligin阶段：对齐，通过zipalign工具对apk中的未压缩资源（图片、视频）进行“对齐操作”，让资源按4字节的边界进行对齐，使得资源访问速度更快。   
 
 ## [Gralde依赖问题](https://segmentfault.com/a/1190000015805844)
 Gradle 默认开启了 依赖传递 意思就是 项目依赖了A，A又依赖了B和C，这时候，我们只需要写一行代码：implementation A就行了，由传递依赖导致的冲突，默认是以最高版本的依赖为准，要想查看整个项目的依赖传递关系，使用命令：
