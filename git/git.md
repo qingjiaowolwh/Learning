@@ -73,6 +73,9 @@ git cherry-pick A2 B2
 git rebase -i A1
 把B1从编辑列表里删掉，保存退出。
 
+git push origin HEAD:dev-1.0-lwh --force
+删除服务器上的commit
+
 ### 大文件上传下载 git-lfs
 https://zzz.buzz/zh/2016/04/19/the-guide-to-git-lfs/
 
