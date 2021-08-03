@@ -57,6 +57,21 @@ Git rebase 不会取回代码 要用git fetch先取回， git rebase 是合并�
 （3）如果发生冲突了会提示， 然后可以使用git diff查看冲突， 在手工改掉冲突， 在用git add ‘文件名’ 添加修改后文件，最后用git rebase --continue继续没完成的合并  
 （4）最后就可以用git push 更新到服务器上去。  
 
+### 像A-B-C这种比较简单的历史，要去掉B的话可以这样  
+git reset A --hard
+git cherry-pick C
+回退到A上然后把C再cherrypick过来，这样就把B给跳过了
+
+如果待处理的提交历史比较长，那用rebase -i更方便一些
+git rebase -i A
+这个命令以A为新的基准（base），将A之后的commit列出来让用户选择如何处理。在出现的编辑界面上，把B前面的pick改成d或者drop，或者把一整行删除掉，保存退出就可以了。
+
+### 同样地，处理A1-B1-A2-B2，要删除B1的话
+git reset A1 --hard
+git cherry-pick A2 B2
+或者
+git rebase -i A1
+把B1从编辑列表里删掉，保存退出。
 
 ### 大文件上传下载 git-lfs
 https://zzz.buzz/zh/2016/04/19/the-guide-to-git-lfs/
