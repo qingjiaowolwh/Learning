@@ -91,4 +91,5 @@ x.x.x -> x.x.x(*) 该依赖的版本被箭头所指的版本代替，并且该�
 ### [深入探究Android应用启动起点](https://juejin.cn/post/6844904104490172430)
 Android应用程序启动是从用户点击桌面图标开始，点击图标的第一响应是在Launcher进程，通过ActivityManagerService将创建进程信息传给zygote，zygote再执行fork，中间经历了两次跨进程通信，一次是Launcher进程通过Binder调用进入system_server进程，一次是system_server进程通过socket将创建进程信息传给zygote，zygote从睡梦中醒来，开始创建进程
 
-###【EventBus底层实现原理】(https://blog.csdn.net/donghejk/article/details/81607908)
+### [EventBus底层实现原理](https://blog.csdn.net/donghejk/article/details/81607908)
+###[SurfaceView及TextureView区别](https://blog.csdn.net/while0/article/details/81481771)
