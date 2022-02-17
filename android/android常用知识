@@ -1,4 +1,4 @@
-奔溃日志
+### 奔溃日志
 不同手机的存储路径可能不太一样，以下路径都找找看：
 /data/local/tmp/*
 /data/tmp/*
@@ -8,3 +8,8 @@
 /data/tombstones/*
 /data/anr/*
 /dev/log/main手机连接adb的话若出现crash也能在adb logcat中看到
+
+### adb devices
+List of devices attached
+FA7290303311    unauthorized
+解决：重置debug模式->重连usb->adb->kill-server->sdb start-server
