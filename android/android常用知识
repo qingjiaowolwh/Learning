@@ -16,3 +16,6 @@ FA7290303311    unauthorized
 
 ### 链接木木模拟器
 adb connect 127.0.0.1:7555
+
+### adb 命令
+拉取手机文件：adb pull /sdcard/AutoSdkDemo/bllog C:\Users\linwuhua\Desktop\logcat
