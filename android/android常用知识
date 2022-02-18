@@ -13,3 +13,6 @@
 List of devices attached
 FA7290303311    unauthorized
 解决：重置debug模式->重连usb->adb->kill-server->sdb start-server
+
+### 链接木木模拟器
+adb connect 127.0.0.1:7555
