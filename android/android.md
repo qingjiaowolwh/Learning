@@ -87,6 +87,7 @@ releaseRuntimeClasspath是具体的variants类型。
 x.x.x (*) 该依赖已经有了，将不再重复依赖。  
 x.x.x -> x.x.x 该依赖的版本被箭头所指的版本代替。   
 x.x.x -> x.x.x(*) 该依赖的版本被箭头所指的版本代替，并且该依赖已经有了，不再重复依赖。  
+https://blog.51cto.com/u_14202100/5825621
 
 ### [深入探究Android应用启动起点](https://juejin.cn/post/6844904104490172430)
 Android应用程序启动是从用户点击桌面图标开始，点击图标的第一响应是在Launcher进程，通过ActivityManagerService将创建进程信息传给zygote，zygote再执行fork，中间经历了两次跨进程通信，一次是Launcher进程通过Binder调用进入system_server进程，一次是system_server进程通过socket将创建进程信息传给zygote，zygote从睡梦中醒来，开始创建进程
