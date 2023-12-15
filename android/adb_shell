@@ -1,1 +1,4 @@
 
+adb logcat -v threadtime > D:\log.txt输出日志到指定路径
+
+adb shell setenforce 0  android 12无法跑asan包
