@@ -36,3 +36,5 @@ public boolean add(E e) {
 
 ## java学习
 https://github.com/Snailclimb/JavaGuide
+
+查看java环境变量路径 where java
