@@ -9,5 +9,3 @@ https://plugins.jenkins.io/skip-certificate-check/
 ## 指定gradle路径
 gradlew assembleDebug -g -path
 
-
-![Uploading image.png…]()
