@@ -1,7 +1,7 @@
-###HTTP协议
+## HTTP协议
 TCP三次握手、四次挥手及状态转换图：https://www.cnblogs.com/wujing-hubei/p/5699773.html<br>
 ![avatar](https://github.com/qingjiaowolwh/LearnPicture/blob/main/http.jpg?raw=true)
-##三次握手<br>
+### 三次握手<br>
 第一次握手：客户端发送syn包（syn=x）的数据包到服务器，并进入SYN_SEND状态，等待服务器确认；<br>
 第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1），同时自己也发送一个SYN包（syn=y），即SYN+ACK包，此时服务器进入SYN_RECV状态；<br>
 第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=y+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。<br>
